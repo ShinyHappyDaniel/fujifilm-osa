@@ -461,7 +461,7 @@ select.input option { color: var(--comm-black); }
   /* Formuläret först, bilden efter. */
   .rsvp { padding-bottom: var(--space-7); }
   .rsvp__panel { order: -1; flex-basis: 100%; padding: var(--space-5) var(--space-4); }
-  .rsvp__image { flex-basis: 100%; aspect-ratio: 4 / 3; object-position: center 30%; }
+  .rsvp__image { flex: 0 0 100%; aspect-ratio: 3 / 4; }
   .form__grid-2 { grid-template-columns: 1fr; }
   .form__submit { align-items: stretch; }
   .form__submit .btn, .thanks .btn { width: 100%; }
