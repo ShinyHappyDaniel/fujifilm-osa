@@ -1,0 +1,413 @@
+/* ------------------------------------------------------------------
+   FUJIFILM X Summit AW – RSVP
+   Tokens från designsystemet "Fujifilm Imaging" (design/fujifilm-imaging-tokens.json)
+   ------------------------------------------------------------------ */
+
+:root {
+  --comm-red: #fb0020;
+  --comm-black: #000000;
+  --white: #ffffff;
+  --surface: var(--comm-black);
+  --surface-alt: #1a1a1a;
+  --ink: var(--white);
+  --ink-muted: #a3a3a3;
+  --hairline: #3d3d3d;
+  --accent: var(--comm-red);
+
+  --font-display: "Fjalla One", "Arial Narrow", sans-serif;
+  --font-text: "Noto Sans", system-ui, -apple-system, sans-serif;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+  --space-8: 96px;
+
+  --gutter: clamp(24px, 6vw, 96px);
+  --radius-0: 0px;
+  --radius-sm: 2px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: 16px;
+  line-height: 26px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--white); }
+a:hover { color: var(--ink-muted); }
+
+img { display: block; max-width: 100%; }
+
+/* ---------- Typografi ---------- */
+
+.h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.h3--large { font-size: 36px; line-height: 1.15; }
+
+.lead { margin: 0; font-size: 20px; line-height: 32px; }
+.body { margin: 0; font-size: 16px; line-height: 26px; }
+.small { margin: 0; font-size: 14px; line-height: 22px; }
+.caption { margin: 0; font-size: 12px; line-height: 18px; }
+.muted { color: var(--ink-muted); }
+.accent { color: var(--accent); }
+
+.label-caps {
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.rule { width: 48px; height: 4px; background: var(--accent); }
+
+/* ---------- Knappar ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  padding: 0 var(--space-5);
+  background: var(--white);
+  color: var(--comm-black);
+  border: 0;
+  border-radius: var(--radius-0);
+  font-family: var(--font-text);
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover { background: var(--accent); color: var(--white); }
+.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--white);
+  align-self: flex-start;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--space-6) var(--gutter) 112px;
+  background-color: var(--comm-black);
+  background-image: url("img/hero.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.hero__logos { display: flex; align-items: center; gap: var(--space-4); }
+.hero__logo--fujifilm { height: 56px; width: auto; }
+
+.hero__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 560px;
+}
+
+.hero__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 1.05;
+  letter-spacing: 0;
+  color: var(--white);
+}
+
+.hero__lead { margin: 0; font-size: 18px; line-height: 28px; }
+.hero__cta { margin-top: var(--space-3); }
+
+/* ---------- Fakta ---------- */
+
+.facts { padding: var(--space-7) var(--gutter); }
+
+.facts__grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  border-top: 2px solid var(--accent);
+  padding-top: var(--space-3);
+}
+
+.fact__label {
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 1.25;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.fact__value { font-size: 16px; line-height: 26px; }
+.fact__link { color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- Inbjudan ---------- */
+
+.invite { padding: var(--space-7) var(--gutter) var(--space-8); }
+
+.invite__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-7);
+  align-items: flex-start;
+}
+
+.invite__copy {
+  flex: 1 1 420px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.invite__program { flex: 1 1 360px; min-width: 0; }
+.invite__program .h3 { margin-bottom: var(--space-4); }
+
+.program { list-style: none; margin: 0; padding: 0; }
+
+.program__item {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--hairline);
+}
+.program__item:last-child { border-bottom: 1px solid var(--hairline); }
+
+.program__time {
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 26px;
+  color: var(--accent);
+  min-width: 56px;
+}
+
+.program__text { font-size: 16px; line-height: 26px; }
+
+/* ---------- OSA ---------- */
+
+.rsvp { padding: 0 var(--gutter) var(--space-8); }
+
+.rsvp__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  align-items: stretch;
+}
+
+.rsvp__image {
+  flex: 1 1 320px;
+  min-width: 0;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.rsvp__panel {
+  flex: 2 1 420px;
+  min-width: 0;
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* ---------- Formulär ---------- */
+
+.form { display: flex; flex-direction: column; gap: var(--space-4); }
+.form[hidden] { display: none; }
+.form__intro { display: flex; flex-direction: column; gap: 12px; }
+
+.form__grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+.form__grid-2--tight { gap: var(--space-2); }
+
+.form__extra { display: flex; flex-direction: column; gap: var(--space-3); }
+.form__extra[hidden] { display: none; }
+
+.form__submit {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.fieldset legend { padding: 0; }
+
+.label {
+  display: block;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--white);
+  margin-bottom: var(--space-2);
+}
+
+.input {
+  width: 100%;
+  height: 52px;
+  padding: 0 var(--space-3);
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--white);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-text);
+  font-size: 16px;
+}
+.input::placeholder { color: var(--ink-muted); }
+.input:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+.input:user-invalid { border-color: var(--accent); }
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--white);
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--white);
+  background: transparent;
+}
+.choice--tall { min-height: 52px; }
+.choice input { width: 18px; height: 18px; accent-color: var(--accent); margin: 0; }
+.choice:has(input[type="radio"]:checked) { border-color: var(--accent); }
+.choice:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Felmeddelanden, spamfälla och knapplägen (script.js) */
+
+.field__error,
+.form__error {
+  margin: var(--space-2) 0 0;
+  padding-left: var(--space-2);
+  border-left: 2px solid var(--accent);
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--white);
+}
+.form__error { margin: 0; }
+.field__error[hidden],
+.form__error[hidden] { display: none; }
+
+.input[aria-invalid="true"] { border-color: var(--accent); }
+textarea.input { height: auto; min-height: 120px; padding: 12px var(--space-3); line-height: 26px; }
+select.input { appearance: none; }
+select.input option { color: var(--comm-black); }
+
+.form__fields-wrap { display: flex; flex-direction: column; gap: var(--space-4); }
+.form__fields-wrap[hidden] { display: none; }
+.form__notes { display: flex; flex-direction: column; gap: var(--space-3); }
+
+.btn[disabled] { opacity: 0.5; cursor: default; }
+.btn[disabled]:hover { background: var(--white); color: var(--comm-black); }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.thanks { display: flex; flex-direction: column; gap: var(--space-3); }
+.thanks[hidden] { display: none; }
+
+/* ---------- Footer ---------- */
+
+.footer {
+  padding: var(--space-6) var(--gutter);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  border-top: 1px solid var(--hairline);
+}
+
+.footer__logos { display: flex; align-items: center; gap: var(--space-4); }
+.footer__logo--fujifilm { height: 40px; width: auto; }
+
+/* ---------- Responsivt ---------- */
+
+@media (max-width: 1100px) {
+  .facts__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 720px) {
+  .hero {
+    height: auto;
+    min-height: 620px;
+    background-position: 65% center;
+    padding-bottom: var(--space-6);
+  }
+  .hero__title { font-size: 44px; }
+  .h2 { font-size: 36px; }
+  .facts__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rsvp__panel { padding: var(--space-4); }
+  .form__grid-2 { grid-template-columns: 1fr; }
+}
