@@ -22,6 +22,7 @@ CNAME        Egen domän för GitHub Pages
 - Sidan anropar två funktioner i databasen: `fujifilm_osa_status` och `fujifilm_osa_svara`.
 - Den publika nyckeln i `db.js` når bara de två funktionerna, aldrig listan med svar.
 - Ett svar per e-postadress. Svarar samma adress igen skrivs det gamla svaret över.
+- Sidvisningar räknas utan cookies via `fujifilm_besok_logga`: tidpunkt, källa och mobil eller dator. Inga IP-adresser.
 - Anmälan stängs i databasen. Då visar sidan "Anmälan är stängd." i stället för formuläret.
 
 ## Ändra
