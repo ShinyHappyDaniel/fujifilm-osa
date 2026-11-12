@@ -13,7 +13,7 @@ index.html   Sidan
 styles.css   All CSS, designsystemets tokens som variabler i :root
 script.js    Formulärlogik: validering, ja/nej, tacktext, spamfälla
 db.js        Koppling till databasen (Supabase), adress och publik nyckel
-img/         Toppbild, formulärbild och FUJIFILM X | GFX-loggan
+img/         Toppbild (hero.jpg, hero-mobile.jpg under 720 px), formulärbild och FUJIFILM X | GFX-loggan
 CNAME        Egen domän för GitHub Pages
 ```
 

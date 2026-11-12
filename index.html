@@ -2,7 +2,9 @@
 <html lang="sv">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="format-detection" content="telephone=no">
   <title>FUJIFILM X Summit AW – OSA 2 december</title>
   <meta name="description" content="FUJIFILM X Summit AW (After Watching) – en inspirerande AW med fotografi, kamerasnack och en summering av X Summit Paris. Studio Perra, 2 december 2026. OSA senast 18 november.">
   <meta name="robots" content="noindex">
@@ -12,14 +14,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="preload" as="image" href="img/hero-mobile.jpg" media="(max-width: 720px)">
+  <link rel="preload" as="image" href="img/hero.jpg" media="(min-width: 721px)">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
 
   <!-- HERO -->
   <section class="hero">
     <header class="hero__logos">
-      <img src="img/fujifilm-x-gfx-white.svg" alt="FUJIFILM X | GFX" class="hero__logo hero__logo--fujifilm">
+      <img src="img/fujifilm-x-gfx-white.svg" alt="FUJIFILM X | GFX" class="hero__logo hero__logo--fujifilm" width="317" height="126">
     </header>
     <div class="hero__text">
       <h1 class="hero__title">FUJIFILM X Summit AW<br>2 DECEMBER</h1>
@@ -83,7 +87,7 @@
   <!-- OSA -->
   <section id="osa" class="rsvp">
     <div class="rsvp__row">
-      <img src="img/velvia.jpg" loading="lazy" alt="FUJIFILM Velvia-burkar staplade i en pyramid" class="rsvp__image">
+      <img src="img/velvia.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt="FUJIFILM Velvia-burkar staplade i en pyramid" class="rsvp__image">
 
       <div class="glass rsvp__panel">
 
@@ -100,18 +104,18 @@
             <div class="form__grid-2">
               <div>
                 <label class="label" for="fname">Förnamn</label>
-                <input class="input" id="fname" name="fname" type="text" autocomplete="given-name" maxlength="100" required>
+                <input class="input" id="fname" name="fname" type="text" autocomplete="given-name" autocapitalize="words" enterkeyhint="next" maxlength="100" required>
                 <p class="field__error" id="fname-error" role="alert" hidden></p>
               </div>
               <div>
                 <label class="label" for="lname">Efternamn</label>
-                <input class="input" id="lname" name="lname" type="text" autocomplete="family-name" maxlength="100" required>
+                <input class="input" id="lname" name="lname" type="text" autocomplete="family-name" autocapitalize="words" enterkeyhint="next" maxlength="100" required>
                 <p class="field__error" id="lname-error" role="alert" hidden></p>
               </div>
             </div>
             <div>
               <label class="label" for="email">E-post</label>
-              <input class="input" id="email" name="email" type="email" autocomplete="email" maxlength="254" required>
+              <input class="input" id="email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="next" maxlength="254" required>
               <p class="field__error" id="email-error" role="alert" hidden></p>
             </div>
 
@@ -131,7 +135,7 @@
             <div id="attend-extra" class="form__extra">
               <div>
                 <label class="label" for="guest">Tar du med en gäst? Skriv namnet (valfritt)</label>
-                <input class="input" id="guest" name="guest" type="text" maxlength="200">
+                <input class="input" id="guest" name="guest" type="text" autocomplete="off" autocapitalize="words" enterkeyhint="send" maxlength="200">
               </div>
               <label class="choice choice--tall"><input type="checkbox" name="portrait"> Jag vill bli porträtterad av Knut eller Jessica*</label>
               <label class="choice choice--tall"><input type="checkbox" name="news"> Jag vill ha nyheter från FUJIFILM</label>
@@ -163,12 +167,12 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer__logos">
-      <img src="img/fujifilm-x-gfx-white.svg" alt="FUJIFILM X | GFX" class="footer__logo footer__logo--fujifilm">
+      <img src="img/fujifilm-x-gfx-white.svg" alt="FUJIFILM X | GFX" class="footer__logo footer__logo--fujifilm" width="317" height="126" loading="lazy">
     </div>
-    <p class="small muted"><a href="https://studioperra.se">Studio Perra</a> · <a href="https://www.google.se/maps/place/Maria+Skolgata+83,+118+53+Stockholm/">Maria Skolgata 83</a> · 118 53 Stockholm</p>
+    <p class="footer__address small muted"><a href="https://studioperra.se">Studio Perra</a><span class="footer__sep" aria-hidden="true"> · </span><a href="https://www.google.se/maps/place/Maria+Skolgata+83,+118+53+Stockholm/">Maria Skolgata 83</a><span class="footer__sep" aria-hidden="true"> · </span><span>118 53 Stockholm</span></p>
   </footer>
 
-  <script src="db.js?v=2"></script>
-  <script src="script.js?v=2"></script>
+  <script src="db.js?v=3"></script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>

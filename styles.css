@@ -26,14 +26,22 @@
   --space-7: 64px;
   --space-8: 96px;
 
-  --gutter: clamp(24px, 6vw, 96px);
+  --gutter: max(clamp(20px, 6vw, 96px), env(safe-area-inset-left), env(safe-area-inset-right));
   --radius-0: 0px;
   --radius-sm: 2px;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
 
 body {
   margin: 0;
@@ -44,10 +52,13 @@ body {
   font-size: 16px;
   line-height: 26px;
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0.15);
 }
 
 a { color: var(--white); }
-a:hover { color: var(--ink-muted); }
+@media (hover: hover) {
+  a:hover { color: var(--ink-muted); }
+}
 
 img { display: block; max-width: 100%; }
 
@@ -108,7 +119,10 @@ img { display: block; max-width: 100%; }
   text-decoration: none;
   cursor: pointer;
 }
-.btn:hover { background: var(--accent); color: var(--white); }
+@media (hover: hover) {
+  .btn:hover { background: var(--accent); color: var(--white); }
+}
+.btn:active { background: var(--accent); color: var(--white); }
 .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 .btn--ghost {
@@ -231,7 +245,7 @@ img { display: block; max-width: 100%; }
 
 /* ---------- OSA ---------- */
 
-.rsvp { padding: 0 var(--gutter) var(--space-8); }
+.rsvp { padding: 0 var(--gutter) var(--space-8); scroll-margin-top: var(--space-4); }
 
 .rsvp__row {
   display: flex;
@@ -244,6 +258,7 @@ img { display: block; max-width: 100%; }
   flex: 1 1 320px;
   min-width: 0;
   width: 100%;
+  height: auto;
   aspect-ratio: 3 / 4;
   object-fit: cover;
 }
@@ -363,7 +378,8 @@ select.input option { color: var(--comm-black); }
 .form__notes { display: flex; flex-direction: column; gap: var(--space-3); }
 
 .btn[disabled] { opacity: 0.5; cursor: default; }
-.btn[disabled]:hover { background: var(--white); color: var(--comm-black); }
+.btn[disabled]:hover,
+.btn[disabled]:active { background: var(--white); color: var(--comm-black); }
 
 .visually-hidden {
   position: absolute;
@@ -399,15 +415,78 @@ select.input option { color: var(--comm-black); }
 }
 
 @media (max-width: 720px) {
+  /* Hero: bilden överst, texten på svart under. Text ligger aldrig på kameran. */
   .hero {
+    display: block;
     height: auto;
-    min-height: 620px;
-    background-position: 65% center;
-    padding-bottom: var(--space-6);
+    padding: 0;
+    background-image: none;
   }
-  .hero__title { font-size: 44px; }
-  .h2 { font-size: 36px; }
-  .facts__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .rsvp__panel { padding: var(--space-4); }
+  .hero__logos {
+    align-items: flex-start;
+    height: min(64vw, 320px);
+    padding: var(--space-4) var(--gutter);
+    padding-top: max(var(--space-4), env(safe-area-inset-top));
+    background-color: var(--comm-black);
+    background-image: url("img/hero-mobile.jpg");
+    background-size: cover;
+    background-position: 82% center;
+    background-repeat: no-repeat;
+  }
+  .hero__logo--fujifilm { height: 44px; }
+  .hero__text {
+    max-width: none;
+    padding: var(--space-5) var(--gutter) var(--space-6);
+  }
+  .hero__title { font-size: clamp(30px, 10.2vw, 44px); }
+  .hero__lead { font-size: 17px; line-height: 27px; }
+  .hero__cta .btn { width: 100%; }
+
+  .h2 { font-size: clamp(26px, 8.4vw, 36px); }
+  .rsvp .h2 { font-size: clamp(23px, 7.3vw, 36px); }
+  .lead { font-size: 18px; line-height: 28px; }
+  .caption { font-size: 14px; line-height: 21px; }
+
+  .facts { padding: var(--space-6) var(--gutter); }
+  .facts__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4) var(--space-3); }
+  .fact:last-child { grid-column: 1 / -1; }
+  .fact__link { display: inline-block; padding: 9px 0; }
+  .fact__link + br { display: none; }
+  .fact__value .fact__link { display: block; }
+
+  .invite { padding: var(--space-5) var(--gutter) var(--space-7); }
+  .invite__row { gap: var(--space-6); }
+  .invite__copy, .invite__program { flex-basis: 100%; }
+
+  /* Formuläret först, bilden efter. */
+  .rsvp { padding-bottom: var(--space-7); }
+  .rsvp__panel { order: -1; flex-basis: 100%; padding: var(--space-5) var(--space-4); }
+  .rsvp__image { flex-basis: 100%; aspect-ratio: 4 / 3; object-position: center 30%; }
   .form__grid-2 { grid-template-columns: 1fr; }
+  .form__submit { align-items: stretch; }
+  .form__submit .btn, .thanks .btn { width: 100%; }
+  .form__notes a { display: block; padding: 12px 0; }
+
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--space-5) var(--gutter);
+    padding-bottom: max(var(--space-5), env(safe-area-inset-bottom));
+  }
+  .footer__address { display: flex; flex-direction: column; }
+  .footer__address a { padding: 11px 0; }
+  .footer__address span { padding: 4px 0; }
+  .footer__sep { display: none; }
+}
+
+/* Pekskärm oavsett bredd (surfplatta): större tryckytor och läsbar finstilt. */
+@media (pointer: coarse) {
+  .caption { font-size: 14px; line-height: 21px; }
+  .fact__link { display: inline-block; padding: 9px 0; }
+  .form__notes a { display: inline-block; padding: 12px 0; }
+  .footer a { display: inline-block; padding: 11px 0; }
+}
+
+@media (max-width: 720px) {
+  .form__notes a { display: block; }
 }
