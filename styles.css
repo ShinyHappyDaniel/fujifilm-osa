@@ -484,9 +484,11 @@ select.input option { color: var(--comm-black); }
   .caption { font-size: 14px; line-height: 21px; }
   .fact__link { display: inline-block; padding: 9px 0; }
   .form__notes a { display: inline-block; padding: 12px 0; }
+  .form__notes a.notes__inline { display: inline; padding: 0; }
   .footer a { display: inline-block; padding: 11px 0; }
 }
 
 @media (max-width: 720px) {
   .form__notes a { display: block; }
+  .form__notes a.notes__inline { display: inline; padding: 0; }
 }

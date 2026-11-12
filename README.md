@@ -1,7 +1,6 @@
-# FUJIFILM X Summit AW, OSA-sida
+# FUJIFILM, OSA-sida
 
-Statisk landningssida med OSA-formulär för FUJIFILM X Summit AW (After Watching),
-Studio Perra, Maria Skolgata 83, onsdagen den 2 december 2026, 18:00 till 21:00.
+Statisk landningssida med OSA-formulär för ett FUJIFILM-event.
 Byggd av Shiny Happy People efter designsystemet Fujifilm Imaging.
 
 Live: https://fujifilm.shinyhappypeople.se/
@@ -21,6 +20,7 @@ CNAME        Egen domän för GitHub Pages
 
 - Sidan anropar två funktioner i databasen: `fujifilm_osa_status` och `fujifilm_osa_svara`.
 - Den publika nyckeln i `db.js` når bara de två funktionerna, aldrig listan med svar.
+- Högst 150 personer, gäster inräknade. Är det fullt visar sidan "Eventet är fullbokat." Nej-svar tas alltid emot.
 - Ett svar per e-postadress. Svarar samma adress igen skrivs det gamla svaret över.
 - Sidvisningar räknas utan cookies via `fujifilm_besok_logga`: tidpunkt, källa och mobil eller dator. Inga IP-adresser.
 - Anmälan stängs i databasen. Då visar sidan "Anmälan är stängd." i stället för formuläret.

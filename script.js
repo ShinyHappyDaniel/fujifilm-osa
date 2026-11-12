@@ -1,4 +1,4 @@
-// FUJIFILM X Summit AW – OSA
+// FUJIFILM OSA-sida
 // Formulärlogik. Svaren sparas i databasen via db.js. Ett svar per e-postadress:
 // svarar samma adress igen skrivs det gamla svaret över.
 
@@ -6,6 +6,7 @@
   var form = document.getElementById('rsvp-form');
   var fields = document.getElementById('rsvp-fields');
   var closed = document.getElementById('rsvp-closed');
+  var full = document.getElementById('rsvp-full');
   var extra = document.getElementById('attend-extra');
   var submitBtn = document.getElementById('rsvp-submit');
   var formError = document.getElementById('rsvp-error');
@@ -28,7 +29,7 @@
     return form.querySelector('input[name="attend"]:checked').value === 'yes';
   }
 
-  // Visa gäst, porträtt och nyheter bara om man kommer.
+  // Visa gäst och nyheter bara om man kommer.
   function syncExtra() {
     extra.hidden = !attending();
   }
@@ -62,7 +63,14 @@
 
   function showClosed() {
     fields.hidden = true;
+    full.hidden = true;
     closed.hidden = false;
+  }
+
+  function showFull() {
+    fields.hidden = true;
+    closed.hidden = true;
+    full.hidden = false;
   }
 
   function showThanks(kommer) {
@@ -117,12 +125,15 @@
       p_epost: form.elements.email.value.trim(),
       p_kommer: kommer,
       p_gast: kommer ? form.elements.guest.value.trim() : '',
-      p_portratt: kommer && form.elements.portrait.checked,
       p_nyheter: kommer && form.elements.news.checked
     }).then(function (svar) {
       setBusy(false);
       if (svar && svar.status === 'ok') showThanks(kommer);
       else if (svar && svar.status === 'stangd') showClosed();
+      else if (svar && svar.status === 'fullt') {
+        if (svar.kvar >= 1) showFormError('Det finns bara en plats kvar. Ta bort gästen för att kunna svara ja.');
+        else showFormError('Eventet är tyvärr fullbokat.');
+      }
       else showFormError('Något i svaret gick inte att spara. Kontrollera uppgifterna och försök igen.');
     }).catch(function (err) {
       console.error('Kunde inte skicka svaret:', err);
@@ -139,6 +150,8 @@
   });
 
   DB_STATUS.then(function (status) {
-    if (status && status.oppen === false) showClosed();
+    if (!status) return;
+    if (status.oppen === false) showClosed();
+    else if (status.fullt) showFull();
   });
 })();
