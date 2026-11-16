@@ -75,8 +75,8 @@
 
   function showThanks(kommer) {
     if (kommer) {
-      thanksTitle.textContent = 'Vi ses på Studio Perra';
-      thanksBody.textContent = 'Dörrarna öppnar 18:00 onsdagen den 2 december på Maria Skolgata 83.';
+      thanksTitle.textContent = 'Vi ses på House of Photography';
+      thanksBody.textContent = 'Dörrarna öppnar 18:00 onsdagen den 2 december på Sankt Paulsgatan 29.';
     } else {
       thanksTitle.textContent = 'Tråkigt att du inte kan komma';
       thanksBody.textContent = 'Tack för att du hörde av dig. Vi hoppas att vi ses en annan gång.';

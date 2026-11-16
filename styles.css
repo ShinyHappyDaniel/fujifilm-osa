@@ -151,6 +151,7 @@ img { display: block; max-width: 100%; }
 
 .hero__logos { display: flex; align-items: center; gap: var(--space-4); }
 .hero__logo--fujifilm { height: 56px; width: auto; }
+.hero__logo--hop { height: 56px; width: 56px; }
 
 .hero__text {
   display: flex;
@@ -407,6 +408,7 @@ select.input option { color: var(--comm-black); }
 
 .footer__logos { display: flex; align-items: center; gap: var(--space-4); }
 .footer__logo--fujifilm { height: 40px; width: auto; }
+.footer__logo--hop { height: 40px; width: 40px; }
 
 /* ---------- Responsivt ---------- */
 
@@ -434,6 +436,8 @@ select.input option { color: var(--comm-black); }
     background-repeat: no-repeat;
   }
   .hero__logo--fujifilm { height: 44px; }
+  .hero__logo--hop { height: 44px; width: 44px; }
+  .hero__logos { gap: var(--space-3); }
   .hero__text {
     max-width: none;
     padding: var(--space-5) var(--gutter) var(--space-6);
